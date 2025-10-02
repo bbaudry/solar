@@ -1,3 +1,5 @@
+#https://github.com/dbanty/sample-rust-action/blob/main/action.yml
+#https://dylananthony.com/blog/how-to-write-a-github-action-in-rust/
 name: solar-sha
 description: generates a visual reprenstation of a commit's short sha
 
