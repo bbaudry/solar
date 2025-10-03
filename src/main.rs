@@ -28,9 +28,14 @@ fn view(app: &App, frame: Frame) {
     ("e", 308),
     ("f", 330),
 ]);
-
     draw.background().color(PURPLE);
-    draw.ellipse().color(hsl((char_hue["f"] as f32) / 360.0,1.0,0.5));
+    let s = "ff42ctv";
+    let char_vec: Vec<char> = s.chars().collect();
+    for c in char_vec {
+        println!("{}", c);
+    draw.ellipse().color(hsl((char_hue[&c] as f32) / 360.0,1.0,0.5));
+    }
+
     draw.to_frame(app, &frame).unwrap();
 }
 
