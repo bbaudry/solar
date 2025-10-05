@@ -3,9 +3,11 @@ use nannou::color::*;
 use std::str;
 use std::collections::HashMap;
 
+// interesting variables
+const canvas_w: u32 = 420.;
 
 fn main() {
-    nannou::sketch(view).size(420, 200).run()
+    nannou::sketch(view).size(canvas_w, 200).run()
 }
 
 fn view(app: &App, frame: Frame) {
