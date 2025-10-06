@@ -25,8 +25,7 @@ fn model(app: &App) -> Model {
     let h=&args[1];
     let stripe_w:u32=99;
     let canvas_w:u32=u32::try_from(h.len()).unwrap()*stripe_w;
-    let canvas_h:u32=canvas_w as f32/1.6; // height and width have a golden ratio
-    let stripe_h:f32=stripe_h as u32;
+    let canvas_h:u32=(canvas_w as f32/1.6) as u32; // height and width have a golden ratio
     dbg!(h);
     app.new_window()
     .size(canvas_w,canvas_h)
