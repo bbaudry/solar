@@ -23,9 +23,10 @@ struct Model {
 fn model(app: &App) -> Model {
     let args: Vec<String> = env::args().collect();
     let h=&args[1];
-    let stripe_w:u32=60;
+    let stripe_w:u32=99;
+    let stripe_h:f32=stripe_w as f32/1.6;
     let canvas_w:u32=u32::try_from(h.len()).unwrap()*stripe_w;
-    let canvas_h:u32=200;
+    let canvas_h:u32=stripe_h as u32;
     dbg!(h);
     app.new_window()
     .size(canvas_w,canvas_h)
