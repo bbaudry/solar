@@ -4,12 +4,6 @@ use std::str;
 use std::collections::HashMap;
 use std::env;
 
-// interesting variables
-const CANVAS_W: u32 = 420; 
-const CANVAS_H: u32 = 200;
-const HASH_LENGTH: f32 = 7.0;
-const STRIPE_W: f32 = CANVAS_W as f32 / HASH_LENGTH;
-
 fn main() {
     nannou::app(model)
         .loop_mode(LoopMode::loop_ntimes(1))
@@ -67,10 +61,10 @@ fn view(app: &App, model: &Model, frame: Frame) {
     ("f", 330),
 ]);
     draw.background().color(PURPLE);
-    let s: &str = &model.commit_hash;
+    let s: &str = model.commit_hash.as_str();
     // get the characters from the hash
     let char_vec: Vec<char> = s.chars().collect();
-    let mut x=- (&model.w as f32/2.0) + &model.stripe_w as f32 / 2.0;
+    let mut x=- (model.w as f32/2.0) + model.stripe_w as f32 / 2.0;
     for c in char_vec {
         // convert the character into a str: https://www.reddit.com/r/rust/comments/eanwkm/how_to_create_a_str_from_char/
         let i=c.to_string();
@@ -78,9 +72,9 @@ fn view(app: &App, model: &Model, frame: Frame) {
 
         draw.rect()
             .color(hsl((char_hue[j] as f32) / 360.0,1.0,0.5))
-            .w_h(&model.stripe_w,&model.h as f32)
+            .w_h(model.stripe_w as f32,model.h as f32)
             .x_y(x,0.0);
-        x=x+&model.stripe_w;
+        x=x+model.stripe_w as f32;
     }
 
     draw.to_frame(app, &frame).unwrap();
